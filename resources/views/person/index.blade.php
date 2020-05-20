@@ -1,6 +1,6 @@
-@extends('layouts.helloapp');
+@extends('layouts.helloapp')
 
-@section('title', 'Person.index');
+@section('title', 'Person.index')
 
 @section('menubar')
     @parent
@@ -9,18 +9,26 @@
 
 @section('content')
     <table>
-    <tr><th>Person</th><th>Board</th></tr>
-    @foreach($items as $item)
+    <tr><th>Message</th><th>Board</th></tr>
+    @foreach($hasItems as $item)
         <tr>
             <td>{{$item->getData()}}</td>
-            <td>@if ($item->board != null) 
+            <td>
                     <table width="100%">
-                        @foreach($item->boards as $obj)
+                        @foreach($item->board as $obj )
                             <tr><td>{{ $obj->getData() }}</td></tr>    
                         @endforeach
                     </table>
-                @endif
             </td>
+        </tr>
+    @endforeach
+    </table>
+    <div style="margin:10px";></div>
+    <table>
+    <tr><th>Person</th></tr>
+    @foreach($noItems as $item)
+        <tr>
+            <td>{{ $item->getData() }}</td>
         </tr>
     @endforeach
     </table>
